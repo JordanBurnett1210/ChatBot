@@ -42,7 +42,7 @@ public class Chatbot
 		this.memesList.add("bad luck brian");
 		this.memesList.add("what if I told you...");
 		this.memesList.add("unhelpful highschool teacher");
-		this.memesList.add("");
+		this.memesList.add("ME GUSTA");
 	}
 	
 	private void buildPoliticalTopicsList()
@@ -81,7 +81,7 @@ public class Chatbot
 		{
 			hasContent = true;
 		}
-		
+				
 		return hasContent;
 	}
 	
@@ -108,9 +108,11 @@ public class Chatbot
 		
 		for(String currentMeme: memesList)
 		{
-			
-		}
-			
+			if(currentInput.toLowerCase().contains(currentMeme.toLowerCase()))
+			{
+				isMeme = true;
+			}
+		}	
 		
 		return isMeme;
 	}

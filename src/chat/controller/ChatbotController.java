@@ -47,6 +47,10 @@ public class ChatbotController
 			{
 				myDisplay.chatInput("Wow, I had no idea you were interted in " + myBot.getContent());
 			}
+			else if(myBot.memeChecker(conversation))
+			{
+				myDisplay.chatInput("what a lame meme :(");
+			}
 			
 			conversation = myDisplay.chatInput(conversation);
 		}
