@@ -47,7 +47,9 @@ public class Chatbot
 	
 	private void buildPoliticalTopicsList()
 	{
-		
+		this.politicalTopicsList.add("Donald Trump");
+		this.politicalTopicsList.add("Hillary Clinton");
+		this.politicalTopicsList.add("Elections");
 	}
 	
 	/**
@@ -115,6 +117,49 @@ public class Chatbot
 		}	
 		
 		return isMeme;
+	}
+	
+	public String processConversation(String currentInput)
+	{
+		String currentTopic = "Oh, what else do you want to talk about?";
+		int randomTopic = (int) (Math.random() * 5); //Generates a random number between 0 and 4.
+		
+		switch(randomTopic)
+		{
+			case 0:
+				if(memeChecker(currentInput))
+				{
+					currentTopic = "That is a very popular meme this year. What else are you wanting to talk about?";
+				}
+				break;
+			case 1:
+				if(politicalTopicChecker(currentInput))
+				{
+					currentTopic = "Elections are coming up. Who's your favorite canidate?";
+				}
+				break;
+			case 2:
+				if(contentChecker(currentInput))
+				{
+					currentTopic = "Huh. So you're into that?";
+				}
+				break;
+			case 3:
+				if(currentInput.length() > 20)
+				{
+					currentTopic = "Wow. You're really long winded, aren't you?";
+				}
+				break;
+			case 4:
+				currentTopic = "How about that weather?";
+				break;
+			default:
+				currentTopic = "It seems the world has ended. Would like some popcorn to munch as you watch the universe die?";
+				break;
+		}
+		
+		
+		return currentTopic;
 	}
 	
 	/**

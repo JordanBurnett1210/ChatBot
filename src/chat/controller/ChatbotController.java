@@ -34,25 +34,7 @@ public class ChatbotController
 		String conversation = myDisplay.chatInput("What would you like to talk about today?");
 		while(myBot.lengthChecker(conversation))
 		{
-//			if(!myBot.quitChecker(conversation))
-//			{
-//				conversation = myBot.processInput(conversation);
-//			}
-//			else
-//			{
-//				shutDown();
-//			}
-			
-			if(myBot.contentChecker(conversation))
-			{
-				myDisplay.chatInput("Wow, I had no idea you were interted in " + myBot.getContent());
-			}
-			else if(myBot.memeChecker(conversation))
-			{
-				myDisplay.chatInput("what a lame meme :(");
-			}
-			
-			conversation = myDisplay.chatInput(conversation);
+			conversation = myDisplay.chatInput(myBot.processConversation(conversation));
 		}
 	}
 	
