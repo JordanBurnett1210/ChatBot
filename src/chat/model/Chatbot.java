@@ -95,7 +95,17 @@ public class Chatbot
 	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
-		return false;
+		boolean isPolitical = false;
+		
+			for(String currentPolitics: politicalTopicsList)
+			{
+				if(currentInput.toLowerCase().contains(currentPolitics.toLowerCase()))
+				{
+					isPolitical = true;
+				}
+			}	
+		
+		return isPolitical;
 	}
 	
 	
