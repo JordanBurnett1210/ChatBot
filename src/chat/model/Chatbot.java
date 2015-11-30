@@ -13,6 +13,7 @@ public class Chatbot
 {
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicsList;
+	private ArrayList<String> notKeyboardMash;
 	private String userName;
 	private String content;
 	
@@ -24,11 +25,13 @@ public class Chatbot
 	{
 		this.memesList = new ArrayList<String>();
 		this.politicalTopicsList = new ArrayList<String>();
+		this.notKeyboardMash = new ArrayList<String>();
 		this.userName = userName;
 		this.content = "Motivational Sign!";
 		
 		buildMemesList();
 		buildPoliticalTopicsList();
+		buildNotKeyboardMash();
 	}
 	
 	private void buildMemesList()
@@ -215,6 +218,47 @@ public class Chatbot
 	public void setContent(String content)
 	{
 		
+	}
+	
+	public boolean quitChecker(String currentInput)
+	{
+		boolean hasQuit = false;
+		
+		if(currentInput.equals("quit"))
+		{
+			hasQuit = true;
+		}
+		
+		return hasQuit;
+	}
+	
+	public void buildNotKeyboardMash()
+	{
+		this.notKeyboardMash.add("S.D.F.");
+		this.notKeyboardMash.add("derf");
+	}
+	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean isKeyboardMash = false;
+		
+		if(currentInput.length() <= 3)
+		{
+			for(String currentMash : notKeyboardMash)
+			{
+				if(currentInput.toLowerCase().contains(currentMash.toLowerCase()))
+				{
+					isKeyboardMash = false;
+				}
+				else
+				{
+					isKeyboardMash = true;
+				}
+			}
+			
+		}
+		
+		return isKeyboardMash;
 	}
 
 }

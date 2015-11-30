@@ -44,7 +44,8 @@ public class ChatbotController
 	
 	private void shutDown()
 	{
-		
+		myDisplay.displayText("Goodbye, " + myBot.getUserName() + " it has been my pleasure to talk with you");
+		System.exit(0);
 	}
 	
 	public ChatView getChatView()
