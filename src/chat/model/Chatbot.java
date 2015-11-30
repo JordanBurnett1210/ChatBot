@@ -232,6 +232,36 @@ public class Chatbot
 		return hasQuit;
 	}
 	
+	public ArrayList<String> getPoliticalTopicsList()
+	{
+		return politicalTopicsList;
+	}
+
+	public void setPoliticalTopicsList(ArrayList<String> politicalTopicsList)
+	{
+		this.politicalTopicsList = politicalTopicsList;
+	}
+
+	public ArrayList<String> getNotKeyboardMash()
+	{
+		return notKeyboardMash;
+	}
+
+	public void setNotKeyboardMash(ArrayList<String> notKeyboardMash)
+	{
+		this.notKeyboardMash = notKeyboardMash;
+	}
+
+	public void setMemesList(ArrayList<String> memesList)
+	{
+		this.memesList = memesList;
+	}
+
+	public void setUserName(String userName)
+	{
+		this.userName = userName;
+	}
+
 	public void buildNotKeyboardMash()
 	{
 		this.notKeyboardMash.add("S.D.F.");
