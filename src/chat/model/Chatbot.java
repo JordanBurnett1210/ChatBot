@@ -27,7 +27,7 @@ public class Chatbot
 		this.politicalTopicsList = new ArrayList<String>();
 		this.notKeyboardMash = new ArrayList<String>();
 		this.userName = userName;
-		this.content = "Motivational Sign!";
+		this.content = "Motivational Poster!";
 		
 		buildMemesList();
 		buildPoliticalTopicsList();
@@ -52,7 +52,18 @@ public class Chatbot
 	{
 		this.politicalTopicsList.add("Donald Trump");
 		this.politicalTopicsList.add("Hillary Clinton");
-		this.politicalTopicsList.add("Elections");
+		this.politicalTopicsList.add("Election");
+		this.politicalTopicsList.add("Democrat");
+		this.politicalTopicsList.add("Republican");
+		this.politicalTopicsList.add("liberal");
+		this.politicalTopicsList.add("conservative");
+		this.politicalTopicsList.add("Biden");
+		this.politicalTopicsList.add("Carson");
+		this.politicalTopicsList.add("Rubio");
+		this.politicalTopicsList.add("Fiorina");
+		this.politicalTopicsList.add("Sanders");
+		this.politicalTopicsList.add("vote");
+		this.politicalTopicsList.add("11/8/16");
 	}
 	
 	/**
@@ -199,7 +210,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getMemesList()
 	{
-		return null;
+		return memesList;
 	}
 	
 	/**
@@ -208,7 +219,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getPoliticalTopicList()
 	{
-		return null;
+		return politicalTopicsList;
 	}
 	
 	/**

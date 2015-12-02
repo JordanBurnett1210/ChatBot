@@ -35,10 +35,24 @@ public class ChatbotController
 	private void chat()
 	{
 		String conversation = myDisplay.chatInput("What would you like to talk about today?");
-		while(myBot.lengthChecker(conversation))
+		//while(myBot.lengthChecker(conversation))
+		//{
+		//	conversation = myDisplay.chatInput(myBot.processConversation(conversation));
+		//}
+	}
+	
+	public String userToChatbot(String conversation)
+	{
+		String response = "";
+		
+		if(myBot.quitChecker(conversation))
 		{
-			conversation = myDisplay.chatInput(myBot.processConversation(conversation));
+			shutDown();
 		}
+		
+		response = myBot.processConversation(conversation);
+		
+		return response;
 	}
 
 	

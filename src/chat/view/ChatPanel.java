@@ -1,7 +1,16 @@
 package chat.view;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+
 import chat.controller.ChatbotController;
 
 public class ChatPanel extends JPanel
@@ -21,7 +30,7 @@ public class ChatPanel extends JPanel
 		chatArea = new JTextArea(10,30);
 		typingField = new JTextField(30);
 		submitButton = new JButton("Submit");
-		promptLabel = new JLabel("Chat with me");
+		promptLabel = new JLabel("Chat me up like one of your french bots.");
 		
 		setupPanel();
 		setupLayout();
@@ -31,13 +40,43 @@ public class ChatPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
-		this.setBackground(Color.BLUE);
+		this.setBackground(Color.GREEN);
 		this.add(chatArea);
 		this.add(typingField);
 		this.add(submitButton);
 		this.add(promptLabel);
 		typingField.setToolTipText("Type here for the chatbot");
 		chatArea.setEnabled(false);
+	}
+
+	private void setupLayout()
+	{
+		baseLayout.putConstraint(SpringLayout.NORTH, chatArea, 10, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, chatArea, 10, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.WEST, typingField, 0, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, typingField, -2, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, submitButton, 6, SpringLayout.EAST, typingField);
+		baseLayout.putConstraint(SpringLayout.SOUTH, submitButton, 0, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, submitButton, 0, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.WEST, promptLabel, 171, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, promptLabel, -33, SpringLayout.NORTH, typingField);
+		
+	}
+	
+	private void setupListeners()
+	{
+		submitButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String userText = typingField.getText();					//Grab user typed answer
+				chatArea.append("\nUser: " + userText);						//display typed answer
+				typingField.setText("");									//send the text to chatbot
+				String response = baseController.userToChatbot(userText);	//chatbot will process
+				chatArea.append("\nChatbot: " + response);					//display the response
+			}
+			
+		});
 	}
 	
 	public ChatbotController getBaseController()
@@ -98,16 +137,6 @@ public class ChatPanel extends JPanel
 	public void setPromptLabel(JLabel promptLabel)
 	{
 		this.promptLabel = promptLabel;
-	}
-
-	private void setupLayout()
-	{
-		
-	}
-	
-	private void setupListeners()
-	{
-		
 	}
 
 }
