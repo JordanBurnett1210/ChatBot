@@ -34,6 +34,9 @@ public class Chatbot
 		buildNotKeyboardMash();
 	}
 	
+	/**
+	 * Creates an array of memes.
+	 */
 	private void buildMemesList()
 	{
 		this.memesList.add("ALIENS.");
@@ -48,6 +51,9 @@ public class Chatbot
 		this.memesList.add("ME GUSTA");
 	}
 	
+	/**
+	 * Creates an array of political topics.
+	 */
 	private void buildPoliticalTopicsList()
 	{
 		this.politicalTopicsList.add("Donald Trump");
@@ -121,7 +127,6 @@ public class Chatbot
 		
 		return isPolitical;
 	}
-	
 	
 	/**
 	 * Checks to see that the supplied String value is in the current memesList variable.
@@ -228,9 +233,14 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
-		
+		this.content = content;
 	}
 	
+	/**
+	 * Checks to see if you are trying to quit.
+	 * @param currentInput
+	 * @return
+	 */
 	public boolean quitChecker(String currentInput)
 	{
 		boolean hasQuit = false;
@@ -273,17 +283,25 @@ public class Chatbot
 		this.userName = userName;
 	}
 
+	/**
+	 * Creates 2 examples of values that are not keyboard mash.
+	 */
 	public void buildNotKeyboardMash()
 	{
 		this.notKeyboardMash.add("S.D.F.");
 		this.notKeyboardMash.add("derf");
 	}
 	
+	/**
+	 * Checks to see if the user is simply keyboard mashing.
+	 * @param currentInput
+	 * @return
+	 */
 	public boolean keyboardMashChecker(String currentInput)
 	{
 		boolean isKeyboardMash = false;
 		
-		if(currentInput.length() <= 3)
+		if(currentInput.length() <= 3 || currentInput.length() >= 45)
 		{
 			for(String currentMash : notKeyboardMash)
 			{

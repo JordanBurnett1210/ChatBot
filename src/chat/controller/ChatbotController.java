@@ -7,7 +7,7 @@ import chat.view.ChatFrame;
 /**
  * Application controller for the Chatbot project.
  * @author jbur0473
- * @version 1.1 10/21/15 added a reference to display and got an error :(
+ * @version 1.5 10/21/15 Now full GUI!
  */
 
 
@@ -18,6 +18,9 @@ public class ChatbotController
 	private ChatView myDisplay;
 	private ChatFrame baseFrame;
 	
+	/**
+	 * Creates values for variables used in this class.
+	 */
 	public ChatbotController()
 	{
 		myDisplay = new ChatView();
@@ -26,12 +29,18 @@ public class ChatbotController
 		baseFrame = new ChatFrame(this);
 	}
 	
+	/**
+	 * Greets the user, initializes the chat method.
+	 */
 	public void start()
 	{
 		myDisplay.chatInput("Hello " + myBot.getUserName());
 		chat();
 	}
 	
+	/**
+	 * Initializes the first question, and starts the chatting process.
+	 */
 	private void chat()
 	{
 		String conversation = myDisplay.chatInput("What would you like to talk about today?");
@@ -41,6 +50,11 @@ public class ChatbotController
 		//}
 	}
 	
+	/**
+	 * Allows for the chatbot to process conversation, and runs quitchecker.
+	 * @param conversation
+	 * @return
+	 */
 	public String userToChatbot(String conversation)
 	{
 		String response = "";
@@ -55,7 +69,9 @@ public class ChatbotController
 		return response;
 	}
 
-	
+	/**
+	 * Creates a shutdown method.
+	 */
 	private void shutDown()
 	{
 		myDisplay.displayText("Goodbye, " + myBot.getUserName() + " it has been my pleasure to talk with you");
