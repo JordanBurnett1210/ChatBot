@@ -78,7 +78,7 @@ public class ChatbotTest
 	{
 		assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("Democrat"));
 		assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("Republican"));
-		assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("11/4/16"));
+		assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("11/8/16"));
 	}
 
 	@Test
@@ -109,7 +109,7 @@ public class ChatbotTest
 		assertTrue("Size check", sampleBot.getPoliticalTopicList().size() >= 10);
 		assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("Democrat"));
 		assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("Republican"));
-		assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("11/4/16"));
+		assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("11/8/16"));
 	}
 
 	@Test
