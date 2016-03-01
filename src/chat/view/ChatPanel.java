@@ -4,16 +4,15 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-<<<<<<< Updated upstream
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-=======
+
 import javax.swing.*;
->>>>>>> Stashed changes
 
 import chat.controller.ChatbotController;
 
@@ -30,10 +29,10 @@ public class ChatPanel extends JPanel
 	private SpringLayout baseLayout;
 	private JButton submitButton;
 	private JLabel promptLabel;
-<<<<<<< Updated upstream
-=======
+
+
 	private JScrollPane textPane;
->>>>>>> Stashed changes
+
 	
 	/**
 	 * Initializes variables, calls all methods.
@@ -48,14 +47,20 @@ public class ChatPanel extends JPanel
 		typingField = new JTextField(30);
 		submitButton = new JButton("Submit");
 		promptLabel = new JLabel("Chat me up like one of your french bots.");
-<<<<<<< Updated upstream
-=======
-		textPane = new JScrollPane()
->>>>>>> Stashed changes
+
+
 		
+
+		setupPane();
 		setupPanel();
 		setupLayout();
 		setupListeners();
+	}
+	
+	
+	private void setupPane()
+	{
+		textPane = new JScrollPane(chatArea);
 	}
 	
 	/**
@@ -65,7 +70,7 @@ public class ChatPanel extends JPanel
 	{
 		this.setLayout(baseLayout);
 		this.setBackground(Color.GREEN);
-		this.add(chatArea);
+		this.add(textPane);
 		this.add(typingField);
 		this.add(submitButton);
 		this.add(promptLabel);
