@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import chat.controller.ChatbotController;
 
 /**
- * @version 0.2.6
+ * @version 0.5 March 7, 2016 - Changed the sendTweet method to handle errors.
  * @author jbur0473
  * Class for all twitter related aspects of chatbot.
  */
