@@ -4,7 +4,7 @@ import twitter4j.*;
 import java.util.ArrayList;
 
 /**
- * @version 0.2.5
+ * @version 0.2.6
  * @author jbur0473
  * Class for all twitter related aspects of chatbot.
  */

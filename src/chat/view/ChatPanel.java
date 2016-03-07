@@ -19,7 +19,7 @@ import chat.controller.ChatbotController;
 /**
  * Creates the inside of the GUI window.
  * @author jbur0473
- * @version 1.2 getters and setters added.
+ * @version 1.3 Added tweet button
  */
 public class ChatPanel extends JPanel
 {
@@ -29,6 +29,7 @@ public class ChatPanel extends JPanel
 	private SpringLayout baseLayout;
 	private JButton submitButton;
 	private JLabel promptLabel;
+	private JButton tweetButton;
 
 
 	private JScrollPane textPane;
@@ -47,6 +48,7 @@ public class ChatPanel extends JPanel
 		typingField = new JTextField(30);
 		submitButton = new JButton("Submit");
 		promptLabel = new JLabel("Chat me up like one of your french bots.");
+		tweetButton = new JButton("Tweet");
 
 
 		
@@ -118,6 +120,14 @@ public class ChatPanel extends JPanel
 				chatArea.append("\nChatbot: " + response);					//display the response
 			}
 			
+		});
+		
+		tweetButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				baseController.sendTweet("no text to send");
+			}
 		});
 	}
 	

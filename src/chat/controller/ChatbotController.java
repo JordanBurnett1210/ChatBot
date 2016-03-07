@@ -2,18 +2,19 @@ package chat.controller;
 
 import chat.view.ChatView;
 import chat.model.Chatbot;
+import chat.model.CTECTwitter;
 import chat.view.ChatFrame;
 
 /**
  * Application controller for the Chatbot project.
  * @author jbur0473
- * @version 1.5 10/21/15 Now full GUI!
+ * @version 1.6 10/21/15 Now full GUI!
  */
 
 
 public class ChatbotController
 {
-
+	private CTECTwitter chatTwitter;
 	private Chatbot myBot;
 	private ChatView myDisplay;
 	private ChatFrame baseFrame;
@@ -27,6 +28,7 @@ public class ChatbotController
 		String userName = myDisplay.chatInput("What is your name?");
 		myBot = new Chatbot(userName);
 		baseFrame = new ChatFrame(this);
+		chatTwitter = new CTECTwitter();
 	}
 	
 	/**
@@ -76,6 +78,11 @@ public class ChatbotController
 	{
 		myDisplay.displayText("Goodbye, " + myBot.getUserName() + " it has been my pleasure to talk with you");
 		System.exit(0);
+	}
+	
+	public void sendTweet(String tweetText)
+	{
+		chatTwitter.sendTweet(tweetText);
 	}
 	
 	public ChatView getChatView()
