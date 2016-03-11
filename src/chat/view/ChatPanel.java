@@ -30,6 +30,9 @@ public class ChatPanel extends JPanel
 	private JButton submitButton;
 	private JLabel promptLabel;
 	private JButton tweetButton;
+	private JButton analyzeTwitterButton;
+	private JButton loadButton;
+	private JButton saveButton;
 
 
 	private JScrollPane textPane;
@@ -49,6 +52,7 @@ public class ChatPanel extends JPanel
 		submitButton = new JButton("Submit");
 		promptLabel = new JLabel("Chat me up like one of your french bots.");
 		tweetButton = new JButton("Tweet");
+		analyzeTwitterButton = new JButton("analyze");
 
 
 		
@@ -82,6 +86,10 @@ public class ChatPanel extends JPanel
 		this.add(textPane);
 		this.add(typingField);
 		this.add(submitButton);
+		this.add(tweetButton);
+		this.add(saveButton);
+		this.add(analyzeTwitterButton);
+		this.add(loadButton);
 		this.add(promptLabel);
 		typingField.setToolTipText("Type here for the chatbot");
 		chatArea.setEnabled(false);
@@ -127,6 +135,16 @@ public class ChatPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				baseController.sendTweet("no text to send");
+			}
+		});
+		
+		analyzeTwitterButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String user = typingField.getText();
+				String results = baseController.analyze(user);
+				chatArea.setText(results);
 			}
 		});
 	}

@@ -90,6 +90,13 @@ public class ChatbotController
 		myDisplay.displayText(errorMessage);
 	}
 	
+	public String analyze(String userName)
+	{
+		String userAnalysis = "The Twitter user " + userName + "has ....";
+		
+		return userAnalysis;
+	}
+	
 	public ChatView getChatView()
 	{
 		return myDisplay;
