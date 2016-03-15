@@ -53,7 +53,7 @@ public class CTECTwitter
 		}
 		for(Status currentStatus : statuses)
 		{
-			String[] twettText = currentStatus.getText().split(" ");
+			String[] tweetText = currentStatus.getText().split(" ");
 			for(String word : tweetTexts)
 			{
 				tweetTexts.add(removePunctuation(word).toLowerCase());
@@ -65,16 +65,34 @@ public class CTECTwitter
 	
 	private void removeEmptyText()
 	{
-		
+		//loops over all the spots in a string and removes all of the spaces!!
+		for(int spot = 0; spot < tweetTexts.size(); spot++)
+		{
+			if(tweetTexts.get(spot).equals(" "))
+			{
+				tweetTexts.remove(spot);
+				spot--;
+			}
+		}
 	}
 	
 	private String removePunctuation(String word)
 	{
-		return null;
+		String punctuation = ".,'?!:;\"(){}^[]<>_-@#$%&*";
+		
+		String scrubbedString = "";
+		for(int i = 0; i < word.length(); i++)
+		{
+			if(punctuation.indexOf(word.charAt(i)) == -1)
+			{
+				scrubbedString += word.charAt(i);
+			}
+		}
+		return scrubbedString;
 	}
 	
 	private List removeCommonEnglishWords(List<String> tweets)
 	{
-		return null;
+		return tweets;
 	}
 }
