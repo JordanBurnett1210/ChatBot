@@ -52,7 +52,14 @@ public class ChatPanel extends JPanel
 		submitButton = new JButton("Submit");
 		promptLabel = new JLabel("Chat me up like one of your french bots.");
 		tweetButton = new JButton("Tweet");
+		baseLayout.putConstraint(SpringLayout.SOUTH, tweetButton, -6, SpringLayout.NORTH, typingField);
 		analyzeTwitterButton = new JButton("analyze");
+		baseLayout.putConstraint(SpringLayout.EAST, analyzeTwitterButton, 0, SpringLayout.EAST, this);
+		saveButton = new JButton("save");
+		baseLayout.putConstraint(SpringLayout.SOUTH, saveButton, -6, SpringLayout.NORTH, tweetButton);
+		loadButton = new JButton("load");
+		baseLayout.putConstraint(SpringLayout.NORTH, loadButton, 35, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, loadButton, 0, SpringLayout.EAST, this);
 
 
 		
@@ -72,6 +79,8 @@ public class ChatPanel extends JPanel
 		chatArea.setEditable(false);
 		chatArea.setBackground(Color.GRAY);
 		textPane = new JScrollPane(chatArea);
+		baseLayout.putConstraint(SpringLayout.WEST, saveButton, 0, SpringLayout.WEST, textPane);
+		baseLayout.putConstraint(SpringLayout.WEST, tweetButton, 0, SpringLayout.WEST, textPane);
 		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 	}

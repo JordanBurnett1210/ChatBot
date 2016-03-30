@@ -1,7 +1,11 @@
 package chat.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import twitter4j.*;
 import chat.controller.ChatbotController;
 
@@ -41,6 +45,10 @@ public class CTECTwitter
 		}
 	}
 	
+	
+	
+	
+	
 	public void loadTweets(String twitterHandle) throws TwitterException
 	{
 		Paging statusPage = new Paging(1, 200);
@@ -78,7 +86,7 @@ public class CTECTwitter
 	
 	private String removePunctuation(String word)
 	{
-		String punctuation = ".,'?!:;\"(){}^[]<>_-@#$%&*";
+		String punctuation = ".,'?!:;\"(){}^[]<>_-$%&*";
 		
 		String scrubbedString = "";
 		for(int i = 0; i < word.length(); i++)
@@ -91,8 +99,105 @@ public class CTECTwitter
 		return scrubbedString;
 	}
 	
+	public String topResult()
+	{
+		String tweetResults = "";
+		
+		int topWordLocation = 0;
+		int topCount = 0;
+		
+		for(int index = 0; index < wordList.size(); index++)
+		{
+			int wordUseCount = 1;
+			
+			for(int spot = index+1;spot < wordList.size(); spot++)
+			{
+				if(wordList.get(index).equals(wordList.get(spot)))
+				{
+					wordUseCount++;
+				}
+				if(wordUseCount > topCount)
+				{
+					topCount = wordUseCount;
+					topWordLocation = index;
+				}
+			}
+		}
+		
+		tweetResults = "The top word in the tweets was " + wordList.get(topWordLocation) + " and it was used "+ topCount + " times.";
+		
+		return tweetResults;
+	}
+	
+	private String[] importWordsToArray()
+	{
+		String[] boringWords;
+		int wordCount = 0;
+		Scanner wordFile = new Scanner(getClass().getResourceAsStream("commonWords.txt"));
+		while(wordFile.hasNext())
+		{
+		wordCount++;
+		wordFile.next();
+		}
+		wordFile = new Scanner(getClass().getResourceAsStream("commonWords.txt"));
+		boringWords = new String[wordCount];
+		int boringWordsCount = 0;
+		while(wordFile.hasNext())
+		{
+			boringWords[boringWordsCount] = wordFile.next();
+			boringWordsCount++;
+		}
+		wordFile.close();
+
+		return boringWords;
+	}
+	
 	private List removeCommonEnglishWords(List<String> tweets)
 	{
+		String[] boringWords = importWordsToArray();
+		
+		for(int count = 0; count < tweetTexts.size(); count++)
+		{
+			for(int removeSpot = 0; removeSpot < boringWords.length; removeSpot++)
+			{
+				if(tweetTexts.get(count).equalsIgnoreCase(boringWords[removeSpot]))
+				{
+					tweetTexts.remove(count);
+					count--;
+					removeSpot = boringWords.length;
+				}
+			}
+		}
+		
 		return tweets;
 	}
+
+
+	public String investigation()
+	{
+		String results = "";
+		
+		Query query = new Query("dinosaur");
+		query.setCount(100);
+		query.setGeoCode(new GeoLocation(40.587521, -111.960178), 5, Query.KILOMETERS);
+		query.setSince("2016-1-1");
+		try
+		{
+			QueryResult result = chatbotTwitter.search(query);
+			results += "Count : " + result.getTweets().size() + "\n";
+			for(Status tweet : result.getTweets())
+			{
+				results.concat("@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n");
+			}
+		}
+		catch(TwitterException error)
+		{
+			error.printStackTrace();
+		}
+		
+		return results;
+	}
+	
+	
+	
 }
