@@ -156,6 +156,21 @@ public class ChatPanel extends JPanel
 				chatArea.setText(results);
 			}
 		});
+		
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String user = typingField.getText();
+				String results = baseController.analyze(user);
+				chatArea.setText(results);
+			}
+		});
+		
+		loadButton.adActionListener(new ActionListener()
+		{
+			
+		});
 	}
 	
 	public ChatbotController getBaseController()
