@@ -23,6 +23,7 @@ import chat.controller.ChatbotController;
  */
 public class ChatPanel extends JPanel
 {
+	//declares all variables
 	private ChatbotController baseController;
 	private JTextArea chatArea;
 	private JTextField typingField;
@@ -70,7 +71,7 @@ public class ChatPanel extends JPanel
 		setupListeners();
 	}
 	
-	
+	//adds required variables to the pane.
 	private void setupPane()
 	{
 		chatArea.setLineWrap(true);
@@ -139,6 +140,7 @@ public class ChatPanel extends JPanel
 			
 		});
 		
+		//sends a base text of "no text to send"
 		tweetButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
@@ -147,6 +149,7 @@ public class ChatPanel extends JPanel
 			}
 		});
 		
+		//returns results for a twitter query
 		analyzeTwitterButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
@@ -157,6 +160,7 @@ public class ChatPanel extends JPanel
 			}
 		});
 		
+		//saves you conversation so far
 		saveButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
@@ -167,9 +171,14 @@ public class ChatPanel extends JPanel
 			}
 		});
 		
-		loadButton.adActionListener(new ActionListener()
+		//loads a conversation from earlier.
+		loadButton.addActionListener(new ActionListener()
 		{
-			
+			 public void actionPerformed(ActionEvent click)
+			 {
+				 String saved = chatArea.getText();
+				 typingField.setText(saved);
+			 }
 		});
 	}
 	
